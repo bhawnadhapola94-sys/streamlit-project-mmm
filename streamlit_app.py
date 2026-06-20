@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 st.set_page_config(page_title="Food Wastage Dashboard", layout="wide")
 
 # Load CSV files
-provider = pd.read_csv("providers.csv")
-receivers = pd.read_csv("receivers.csv")
-claims = pd.read_csv("claims.csv")
-food = pd.read_csv("food_list.csv")
+provider = pd.read_csv(r"C:\Users\Admin\OneDrive\Desktop\bhawna python\food folder\providers.csv")
+receivers = pd.read_csv(r"C:\Users\Admin\OneDrive\Desktop\bhawna python\food folder\receivers.csv")
+claims = pd.read_csv(r"C:\Users\Admin\OneDrive\Desktop\bhawna python\food folder\claims.csv")
+food = pd.read_csv(r"C:\Users\Admin\OneDrive\Desktop\bhawna python\food folder\food_list.csv")
 
 st.title("Food Wastage Management Dashboard")
 
@@ -98,4 +98,3 @@ claims_food_receiver = pd.merge(claims_food_receiver, receivers, on="Receiver_ID
 fig, ax = plt.subplots()
 claims_food_receiver.groupby('Name')['Quantity'].mean().sort_values(ascending=False).plot(kind='bar', ax=ax)
 st.pyplot(fig)
-
