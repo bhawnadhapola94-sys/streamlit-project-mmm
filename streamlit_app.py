@@ -11,6 +11,12 @@ claims = pd.read_csv("claims.csv")
 food = pd.read_csv("food_list.csv")
 
 st.title("Food Wastage Management Dashboard")
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric("Providers", len(provider))
+col2.metric("Receivers", len(receivers))
+col3.metric("Food Items", len(food))
+col4.metric("Claims", len(claims))
 
 # 1. Provider Types Distribution
 st.subheader("1. Provider Types Distribution")
