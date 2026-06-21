@@ -19,6 +19,7 @@ col3.metric("Food Items", len(food))
 col4.metric("Claims", len(claims))
 st.markdown("---")
 st.header("Overview")
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -32,7 +33,8 @@ with col2:
     fig, ax = plt.subplots()
     receivers['Type'].value_counts().plot(kind='bar', ax=ax)
     st.pyplot(fig)
-    col1, col2 = st.columns(2)
+
+col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("Food Count by Location")
@@ -47,22 +49,8 @@ with col2:
     fig, ax = plt.subplots()
     food['Meal_Type'].value_counts().plot(kind='bar', ax=ax)
     st.pyplot(fig)
-    col1, col2 = st.columns(2)
 
-with col1:
-    st.subheader("Food Count by Location")
-    fig, ax = plt.subplots()
-    food.groupby('Location')['Food_Name'].count().sort_values(
-        ascending=False
-    ).plot(kind='bar', ax=ax)
-    st.pyplot(fig)
-
-with col2:
-    st.subheader("Meal Types")
-    fig, ax = plt.subplots()
-    food['Meal_Type'].value_counts().plot(kind='bar', ax=ax)
-    st.pyplot(fig)
-    st.markdown("""
+st.markdown("""
 This dashboard provides insights into food donations,
 providers, receivers, and claims to help reduce food wastage.
 """)
