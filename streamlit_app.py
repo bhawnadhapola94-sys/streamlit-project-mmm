@@ -43,18 +43,25 @@ with col2:
 col3, col4 = st.columns(2)
 
 with col3:
-    st.subheader("Top 10 Locations")
-    top_locations = (
-        food.groupby('Location')['Food_Name']
-        .count()
-        .sort_values(ascending=False)
-        .head(10)
-    )
+    st.subheader("13. Quantity Donated per Provider")
 
-    fig, ax = plt.subplots(figsize=(5,3))
-    top_locations.plot(kind='bar', ax=ax)
-    plt.xticks(rotation=45)
-    st.pyplot(fig)
+provider_food = pd.merge(food, provider, on="Provider_ID")
+
+donation = (
+    provider_food.groupby('Name')['Quantity']
+    .sum()
+    .sort_values(ascending=False)
+    .head(5)   # Top 5 providers only
+)
+
+fig, ax = plt.subplots(figsize=(5, 5))
+donation.plot(
+    kind='pie',
+    autopct='%1.1f%%',
+    ax=ax
+)
+ax.set_ylabel('')   
+st.pyplot(fig)
 
 with col4:
     st.subheader("Meal Types")
