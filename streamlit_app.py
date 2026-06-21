@@ -25,7 +25,7 @@ col1, col2 = st.columns(2)
 with col1:
    provider_count = provider['Type'].value_counts().sort_index()
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(5,3))
 provider_count.plot(
     kind='line',
     marker='o',
