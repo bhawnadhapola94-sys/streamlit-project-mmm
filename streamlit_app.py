@@ -54,7 +54,7 @@ donation = (
     .head(5)   # Top 5 providers only
 )
 
-fig, ax = plt.subplots(figsize=(5, 5))
+fig, ax = plt.subplots(figsize=(5,3))
 donation.plot(
     kind='pie',
     autopct='%1.1f%%',
