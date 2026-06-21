@@ -9,12 +9,6 @@ provider = pd.read_csv("providers.csv")
 receivers = pd.read_csv("receivers.csv")
 claims = pd.read_csv("claims.csv")
 food = pd.read_csv("food_list.csv")
-st.sidebar.title("Dashboard Filters")
-
-selected_city = st.sidebar.selectbox(
-    "Select City",
-    ["All"] + sorted(provider["City"].dropna().unique().tolist())
-)
 
 st.title("Food Wastage Management Dashboard")
 col1, col2, col3, col4 = st.columns(4)
