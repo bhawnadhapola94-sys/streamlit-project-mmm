@@ -54,12 +54,12 @@ donation = (
     .head(5)   
 )
 
-fig, ax = plt.subplots(figsize=(2,2))
+fig, ax = plt.subplots(figsize=(1,1))
 donation.plot(
     kind='pie',
     autopct='%1.1f%%',
     ax=ax,
-    textprops={'fontsize':6}
+    textprops={'fontsize':4}
 )
 ax.set_ylabel('')
 st.pyplot(fig)
