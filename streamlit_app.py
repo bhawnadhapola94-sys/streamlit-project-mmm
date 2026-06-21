@@ -51,10 +51,10 @@ donation = (
     provider_food.groupby('Name')['Quantity']
     .sum()
     .sort_values(ascending=False)
-    .head(5)   # Top 5 providers only
+    .head(5)   
 )
 
-fig, ax = plt.subplots(figsize=(5,3))
+fig, ax = plt.subplots(figsize=(4,3))
 donation.plot(
     kind='pie',
     autopct='%1.1f%%',
