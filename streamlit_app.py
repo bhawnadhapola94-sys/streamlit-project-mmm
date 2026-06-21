@@ -23,11 +23,22 @@ st.header("Overview")
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Provider Types Distribution")
-    fig, ax = plt.subplots()
-    provider['Type'].value_counts().plot(kind='bar', ax=ax)
-    st.pyplot(fig)
+   provider_count = provider['Type'].value_counts().sort_index()
 
+fig, ax = plt.subplots()
+provider_count.plot(
+    kind='line',
+    marker='o',
+    linewidth=2,
+    ax=ax
+)
+
+ax.set_xlabel("Provider Type")
+ax.set_ylabel("Count")
+ax.set_title("Provider Type Distribution")
+plt.xticks(rotation=45)
+
+st.pyplot(fig)
 with col2:
     st.subheader("Receiver Types Distribution")
     fig, ax = plt.subplots()
@@ -37,12 +48,17 @@ with col2:
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Food Count by Location")
-    fig, ax = plt.subplots()
-    food.groupby('Location')['Food_Name'].count().sort_values(
-        ascending=False
-    ).plot(kind='bar', ax=ax)
-    st.pyplot(fig)
+    location_count = (
+    food.groupby('Location')['Food_Name']
+    .count()
+    .sort_values(ascending=False)
+    .head(10)
+)
+
+location_count.plot(kind='barh', ax=ax)
+ax.set_xlabel("Food Count")
+ax.set_ylabel("Location")
+ax.set_title("Top 10 Locations by Food Count")
 
 with col2:
     st.subheader("Meal Types")
