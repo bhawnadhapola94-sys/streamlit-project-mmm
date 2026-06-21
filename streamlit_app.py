@@ -58,7 +58,7 @@ fig, ax = plt.subplots(figsize=(3,3))
 donation.plot(
     kind='pie',
     autopct='%1.1f%%',
-    ax=ax
+    ax=ax,
     textprops={'fontsize':8}
 )
 ax.set_ylabel('')   
