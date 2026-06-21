@@ -43,7 +43,7 @@ with col2:
 col3, col4 = st.columns(2)
 
 with col3:
-    st.subheader("13. Quantity Donated per Provider")
+    st.subheader("13. Top 5 Providers by Quantity Donated")
 
 provider_food = pd.merge(food, provider, on="Provider_ID")
 
@@ -51,19 +51,16 @@ donation = (
     provider_food.groupby('Name')['Quantity']
     .sum()
     .sort_values(ascending=False)
-    .head(5)   
+    .head(5)
 )
 
-fig, ax = plt.subplots(figsize=(1,1))
-donation.plot(
-    kind='pie',
-    autopct='%1.1f%%',
-    ax=ax,
-    textprops={'fontsize':4}
-)
-ax.set_ylabel('')
+fig, ax = plt.subplots(figsize=(5, 3))
+donation.plot(kind='barh', ax=ax)
+ax.set_xlabel("Quantity")
+ax.set_ylabel("")
+plt.tight_layout()
+
 st.pyplot(fig)
-
 with col4:
     st.subheader("Meal Types")
     fig, ax = plt.subplots(figsize=(5,3))
