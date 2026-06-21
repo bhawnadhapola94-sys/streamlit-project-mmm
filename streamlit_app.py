@@ -48,12 +48,7 @@ with col2:
 col1, col2 = st.columns(2)
 
 with col1:
-    location_count = (
-    food.groupby('Location')['Food_Name']
-    .count()
-    .sort_values(ascending=False)
-    .head(10)
-)
+    location_count = (food.groupby('Location')['Food_Name'].count().sort_values(ascending=False).head(10))
 
 location_count.plot(kind='barh', ax=ax)
 ax.set_xlabel("Food Count")
