@@ -54,14 +54,16 @@ donation = (
     .head(5)   
 )
 
-fig, ax = plt.subplots(figsize=(3,3))
+fig, ax = plt.subplots(figsize=(2.5,2.5))
 donation.plot(
     kind='pie',
+    labels=None,
     autopct='%1.1f%%',
     ax=ax,
-    textprops={'fontsize':8}
+    textprops={'fontsize':6}
 )
-ax.set_ylabel('')   
+ax.set_ylabel('')
+ax.legend(donation.index, loc='upper left', fontsize=6)
 st.pyplot(fig)
 
 with col4:
